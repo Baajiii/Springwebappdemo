@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="emp" class="com.samples.SpringcoreDI.Employee"
+		p:id="25" p:name="baaji">
+		<property name="address">
+			<bean class="com.samples.SpringcoreDI.Address"
+				p:houseNumber="123" p:street="main street" p:city="NY" />
+		</property>
+	</bean>
+	<bean name="hospital" class="com.samples.SpringcoreDI.Hospital">
+		<property name="name" value="Mphasis Hospital" />
+		<property name="departments">
+			<list>
+				<value>Reception</value>
+				<value>Emergency</value>
+				<value>Out-Patient</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="cardealer" class="com.samples.SpringcoreDI.CarDealer">
+		<property name="name" value="Baaji Cars" />
+		<property name="Companies">
+			<set>
+				<value>BMW</value>
+				<value>Audi</value>
+				<value>Ferrary</value>
+			</set>
+		</property>
+	</bean>
+	<bean name="customer"
+		class="com.samples.SpringcoreDI.Customer" p:id="37">
+		<property name="products">
+			<map>
+				<entry key="100" value="IPhone" />
+				<entry key="200" value="Laptop" />
+				<entry key="300" value="Mobile" />
+				<entry key="400" value="Mouse" />
+				<entry key="500" value="Keyboard" />
+			</map>
+		</property>
+	</bean>
+	<bean name="item"
+		class="com.samples.SpringcoreDI.item" p:id="37" p:name="pen" p:price="10" p:quantity="2" />
+		
+	<bean name="shoppingcart" class="com.samples.SpringcoreDI.ShoppingCart" p:item-ref="item" />
+	
+	<bean name="patient" class="com.samples.SpringcoreDI.Patient"
+		p:id="11"  />
+		 
+	<context:annotation-config />
+	
+</beans>
